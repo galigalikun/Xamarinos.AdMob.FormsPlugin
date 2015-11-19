@@ -1,8 +1,8 @@
 ﻿using System;
 using AdMobXamarinForms_iOS;
-using GoogleAdMobAds;
 using UIKit;
 using AdmobXamarin.Plugin;
+using Google.MobileAds;
 
 
 
@@ -17,12 +17,12 @@ namespace AdMobXamarinForms_iOS
 
 		#region IAdsInterstitial implementation
 
-		GADInterstitial adsInterstitial;
+		Interstitial adsInterstitial;
 
 		public void Show (string adUnit)
 		{
-			adsInterstitial = new GADInterstitial(adUnit);
-			var request = GADRequest.Request;
+			adsInterstitial = new Interstitial(adUnit);
+			var request = Request.GetDefaultRequest ();
 			adsInterstitial.AdReceived += (sender, args) =>
 			{
 				if (adsInterstitial.IsReady)

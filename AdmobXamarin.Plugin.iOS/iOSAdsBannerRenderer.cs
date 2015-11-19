@@ -1,5 +1,4 @@
 ﻿using System;
-using GoogleAdMobAds;
 using Xamarin.Forms;
 using AdMobXamarinForms_iOS;
 using Xamarin.Forms.Platform.iOS;
@@ -7,6 +6,7 @@ using UIKit;
 using CoreGraphics;
 using AdmobXamarin.Plugin;
 using AdmobXamarin.Plugin.iOS;
+using Google.MobileAds;
 
 [assembly: ExportRenderer(typeof(AdsBanner), typeof(iOSAdsBannerRenderer))]
 namespace AdmobXamarin.Plugin.iOS
@@ -23,7 +23,7 @@ namespace AdmobXamarin.Plugin.iOS
 
 		}
 
-		GADBannerView adView;
+		BannerView adView;
 		bool viewOnScreen = false;
 
 		protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.View> e)
@@ -31,7 +31,7 @@ namespace AdmobXamarin.Plugin.iOS
 			base.OnElementChanged(e);
 			if (Control == null ) {
 				var adsbanner = (AdsBanner)Element;
-				adView = new GADBannerView (size: GADAdSizeCons.Banner, origin: new CGPoint (0, 0)) {
+				adView = new BannerView (size: AdSizeCons.Banner, origin: new CGPoint (0, 0)) {
 					AdUnitID = adsbanner.AdID,
 					RootViewController = UIApplication.SharedApplication.Windows [0].RootViewController
 				};
@@ -42,7 +42,7 @@ namespace AdmobXamarin.Plugin.iOS
 					viewOnScreen = true;
 				};
 
-				adView.LoadRequest (GADRequest.Request);
+				adView.LoadRequest (Request.GetDefaultRequest ());
 				base.SetNativeControl (adView);
 			}
 
