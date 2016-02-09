@@ -11,12 +11,16 @@ namespace AdmobXamarin.Plugin.Droid
 			AdInterstitial = adInterstitial;
 		}
 
+		public Action AdLoaded;
+
 		public override void OnAdLoaded()
 		{
 			base.OnAdLoaded();
 
-			if (AdInterstitial.IsLoaded)
-				AdInterstitial.Show();
+			if (AdInterstitial.IsLoaded) {
+				AdInterstitial.Show ();
+			}
+			AdLoaded?.Invoke ();
 		}
 	}
 }

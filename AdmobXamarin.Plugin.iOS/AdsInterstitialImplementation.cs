@@ -1,17 +1,15 @@
 ﻿using System;
-using AdMobXamarinForms_iOS;
 using UIKit;
 using AdmobXamarin.Plugin;
 using Google.MobileAds;
+using AdmobXamarin.Plugin.Shared;
+using System.Threading.Tasks;
 
-
-
-[assembly: Xamarin.Forms.Dependency(typeof(iOSAdsInterstitial))]
-namespace AdMobXamarinForms_iOS
+namespace AdmobXamarin.Plugin.iOS
 {
-	public class iOSAdsInterstitial : IAdsInterstitial
+	public class AdsInterstitialImplementation : IAdsInterstitial
 	{
-		public iOSAdsInterstitial ()
+		public AdsInterstitialImplementation ()
 		{
 		}
 
@@ -19,9 +17,18 @@ namespace AdMobXamarinForms_iOS
 
 		Interstitial adsInterstitial;
 
-		public void Show (string adUnit)
+		TaskCompletionSource<bool> showTask;
+
+		public Task Show ()
 		{
-			adsInterstitial = new Interstitial(adUnit);
+			if (showTask != null) {
+				showTask.TrySetResult (false);
+				showTask.TrySetCanceled ();
+			} else {
+				showTask = new TaskCompletionSource<bool> ();
+			}
+
+			adsInterstitial = new Interstitial(CrossAdmobManager.AdmobKey);
 			var request = Request.GetDefaultRequest ();
 			adsInterstitial.AdReceived += (sender, args) =>
 			{
@@ -35,9 +42,12 @@ namespace AdMobXamarinForms_iOS
 					}
 					adsInterstitial.PresentFromRootViewController(vc);
 				}
+				if (showTask != null) {
+					showTask.TrySetResult (adsInterstitial.IsReady);
+				}
 			};
 			adsInterstitial.LoadRequest(request);
-
+			return Task.WhenAll (showTask.Task);
 		}
 
 		#endregion

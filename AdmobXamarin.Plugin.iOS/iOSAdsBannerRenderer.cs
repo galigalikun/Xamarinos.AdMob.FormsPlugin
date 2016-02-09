@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using AdMobXamarinForms_iOS;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using CoreGraphics;

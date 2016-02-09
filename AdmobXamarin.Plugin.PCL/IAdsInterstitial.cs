@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace AdmobXamarin.Plugin
 {
@@ -7,8 +8,7 @@ namespace AdmobXamarin.Plugin
 		/// <summary>
 		/// Show Interstitial Ad.
 		/// </summary>
-		/// <param name="AdIdInterstitial"> Set Ad identifier interstitial android/iOS.</param>
-		void Show(string AdIdInterstitial);
+		Task Show();
 	}
 }
 
