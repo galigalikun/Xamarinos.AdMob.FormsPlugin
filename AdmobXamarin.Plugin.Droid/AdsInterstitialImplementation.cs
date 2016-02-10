@@ -18,7 +18,7 @@ namespace AdmobXamarin.Plugin.Droid
 
 		TaskCompletionSource<bool> showTask;
 
-		public Task Show ()
+		public Task Show (Action OnPresented = null)
 		{
 			if (showTask != null) {
 				showTask.TrySetResult (false);
@@ -32,11 +32,14 @@ namespace AdmobXamarin.Plugin.Droid
 
 			var intlistener = new AdListenerInterstitial(AdInterstitial);
 			intlistener.AdLoaded = () => {
+				OnPresented?.Invoke();
+			};
+			intlistener.AdClosed = () => {
 				if (showTask != null) {
 					showTask.TrySetResult (AdInterstitial.IsLoaded);
 				}
 			};
-			intlistener.OnAdLoaded();
+			//intlistener.OnAdLoaded();
 			AdInterstitial.AdListener = intlistener;
 
 			var requestbuilder = new AdRequest.Builder();

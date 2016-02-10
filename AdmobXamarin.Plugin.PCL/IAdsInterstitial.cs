@@ -8,7 +8,7 @@ namespace AdmobXamarin.Plugin
 		/// <summary>
 		/// Show Interstitial Ad.
 		/// </summary>
-		Task Show();
+		Task Show(Action OnPresented = null);
 	}
 }
 

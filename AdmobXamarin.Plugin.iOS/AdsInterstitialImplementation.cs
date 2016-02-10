@@ -19,7 +19,7 @@ namespace AdmobXamarin.Plugin.iOS
 
 		TaskCompletionSource<bool> showTask;
 
-		public Task Show ()
+		public Task Show (Action OnPresented = null)
 		{
 			if (showTask != null) {
 				showTask.TrySetResult (false);
@@ -41,7 +41,10 @@ namespace AdmobXamarin.Plugin.iOS
 						vc = vc.PresentedViewController;
 					}
 					adsInterstitial.PresentFromRootViewController(vc);
+					OnPresented?.Invoke();
 				}
+			};
+			adsInterstitial.ScreenDismissed += (sender, e) => {
 				if (showTask != null) {
 					showTask.TrySetResult (adsInterstitial.IsReady);
 				}

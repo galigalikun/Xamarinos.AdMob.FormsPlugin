@@ -12,6 +12,7 @@ namespace AdmobXamarin.Plugin.Droid
 		}
 
 		public Action AdLoaded;
+		public Action AdClosed;
 
 		public override void OnAdLoaded()
 		{
@@ -21,6 +22,12 @@ namespace AdmobXamarin.Plugin.Droid
 				AdInterstitial.Show ();
 			}
 			AdLoaded?.Invoke ();
+		}
+
+		public override void OnAdClosed ()
+		{
+			base.OnAdClosed ();
+			AdClosed?.Invoke ();
 		}
 	}
 }
