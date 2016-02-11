@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata minClientVersion="2.8.3">
+		<id>Xamarinos.AdMob.FormsPlugin</id>
+		<version>1.0.2</version>
+		<title>AdMob Plugin for Xamarin.Forms</title>
+		<authors>Los Xamarinos</authors>
+		<owners>Los Xamarinos</owners>
+		<!--Default Icon, a template can be found:  https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Plugins-Templates/icons/plugin_icon.png-->
+		<iconUrl>http://xamarinos.com/img/favicon.ico</iconUrl>
+    <licenseUrl>https://raw.githubusercontent.com/LosXamarinos/AdmobXamarin.Plugin/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LosXamarinos/AdmobXamarin.Plugin</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+      AdMob PlugIn for Xamarin.Forms.
+    </description>
+		<summary>AdMob PlugIn for Xamarin.Forms.</summary>
+		<tags>xamarin, pcl, xam.pcl, plugin, plugin for xamarin.forms, android, xamarin.forms, ios</tags>
+		<dependencies>
+			<group targetFramework="net">
+				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
+			</group>
+			<group targetFramework="MonoAndroid">
+				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
+        <dependency id="Xamarin.GooglePlayServices.Ads" version="27.0.0" />
+			</group>
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
+        <dependency id="Xamarin.Google.iOS.MobileAds" version="7.6.0.1" />
+			</group>
+			<group targetFramework="portable-net45+win8+wpa81+wp8">
+				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
+			</group>
+			<group targetFramework="dotnet">
+				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<!--Core-->
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.dll" target="lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarinos.AdMob.Forms.Abstractions.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.xml" target="lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarinos.AdMob.Forms.Abstractions.xml" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.pdb" target="lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarinos.AdMob.Forms.Abstractions.pdb" />
+		
+		<!--dotnet-->
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.dll" target="lib\dotnet\Xamarinos.AdMob.Forms.Abstractions.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.xml" target="lib\dotnet\Xamarinos.AdMob.Forms.Abstractions.xml" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.pdb" target="lib\dotnet\Xamarinos.AdMob.Forms.Abstractions.pdb" />
+
+		<!--Xamarin.Android-->
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Android\bin\Release\Xamarinos.AdMob.Forms.Android.dll" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Android.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Android\bin\Release\Xamarinos.AdMob.Forms.Android.xml" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Android.xml" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Android\bin\Release\Xamarinos.AdMob.Forms.Android.pdb" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Android.pdb" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.dll" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Abstractions.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.xml" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Abstractions.xml" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.pdb" target="lib\MonoAndroid10\Xamarinos.AdMob.Forms.Abstractions.pdb" />
+
+		<!--Xamarin.iOS-->
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.iOS\bin\iPhone\Release\Xamarinos.AdMob.Forms.iOS.dll" target="lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.iOS.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.iOS\bin\iPhone\Release\Xamarinos.AdMob.Forms.iOS.xml" target="lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.iOS.xml" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.dll" target="lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.Abstractions.dll" />
+		<file src="Xamarinos.AdMob.Forms\Xamarinos.AdMob.Forms.FormsPlugin.Abstractions\bin\Release\Xamarinos.AdMob.Forms.Abstractions.xml" target="lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.Abstractions.xml" />
+    
+	</files>
+</package>
