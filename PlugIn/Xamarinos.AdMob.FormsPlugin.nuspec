@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xamarinos.AdMob.FormsPlugin</id>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 		<title>AdMob Plugin for Xamarin.Forms</title>
 		<authors>Los Xamarinos</authors>
 		<owners>Los Xamarinos</owners>
@@ -22,7 +22,7 @@
 			</group>
 			<group targetFramework="MonoAndroid">
 				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
-        <dependency id="Xamarin.GooglePlayServices.Ads" version="27.0.0" />
+        <dependency id="Xamarin.GooglePlayServices.Ads" version="[26.0.0]" />
 			</group>
 			<group targetFramework="Xamarin.iOS10">
 				<dependency id="Xamarin.Forms" version="2.0.1.6505" />
