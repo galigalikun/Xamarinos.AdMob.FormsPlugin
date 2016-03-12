@@ -9,8 +9,8 @@
     <ProjectGuid>{C3915849-5B5E-4EC7-A688-45652367289E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xamarinos.AdMob.Windows</RootNamespace>
-    <AssemblyName>Xamarinos.AdMob.Windows</AssemblyName>
+    <RootNamespace>Xamarinos.AdMob.Forms.Windows</RootNamespace>
+    <AssemblyName>Xamarinos.AdMob.Forms.Windows</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
