@@ -18,8 +18,13 @@ namespace Xamarinos.AdMob.Forms
 {
     public class AdsInterstitialImplementation : IInterstitialAdManager
     {
-        public AdsInterstitialImplementation()
+		private AdRequest.Builder requestBuilder;
+		public AdsInterstitialImplementation(List<string>testDevices)
         {
+			requestBuilder = new AdRequest.Builder();
+			foreach (var id in testDevices)
+				requestBuilder.AddTestDevice(id);
+			requestBuilder.AddTestDevice(AdRequest.DeviceIdEmulator);
         }
 
         #region IAdsInterstitial implementation
@@ -53,9 +58,7 @@ namespace Xamarinos.AdMob.Forms
             };
             //intlistener.OnAdLoaded();
             AdInterstitial.AdListener = intlistener;
-
-            var requestbuilder = new AdRequest.Builder();
-            AdInterstitial.LoadAd(requestbuilder.Build());
+			AdInterstitial.LoadAd(requestBuilder.Build());
             return Task.WhenAll(showTask.Task);
         }
 

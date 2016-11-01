@@ -10,16 +10,15 @@ namespace Xamarinos.AdMob.Forms
 {
     public class AdsInterstitialImplementation : IInterstitialAdManager
     {
-        public AdsInterstitialImplementation()
+		private List<string> testDevicesId;
+		public AdsInterstitialImplementation(List<string>testDevices)
         {
+			testDevicesId = testDevices;
         }
 
         #region IAdsInterstitial implementation
-
         Interstitial adsInterstitial;
-
         TaskCompletionSource<bool> showTask;
-
         public Task Show(Action OnPresented = null)
         {
             if (showTask != null)
@@ -30,7 +29,6 @@ namespace Xamarinos.AdMob.Forms
             else {
                 showTask = new TaskCompletionSource<bool>();
             }
-
             adsInterstitial = new Interstitial(CrossAdmobManager.AdmobKey);
             var request = Request.GetDefaultRequest();
             adsInterstitial.AdReceived += (sender, args) =>
@@ -53,6 +51,8 @@ namespace Xamarinos.AdMob.Forms
                     showTask.TrySetResult(adsInterstitial.IsReady);
                 }
             };
+			testDevicesId.Add(Request.SimulatorId);
+			request.TestDevices = testDevicesId.ToArray();
             adsInterstitial.LoadRequest(request);
             return Task.WhenAll(showTask.Task);
         }

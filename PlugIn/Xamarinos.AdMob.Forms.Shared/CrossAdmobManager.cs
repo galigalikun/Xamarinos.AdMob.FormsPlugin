@@ -8,9 +8,11 @@ namespace Xamarinos.AdMob.Forms
 {
     public class CrossAdmobManager
     {
-        public static void Init(string admobKey)
+		private static List<string> testDevicesId;
+		public static void Init(string admobKey, List<string> testDevices )
         {
             AdmobKey = admobKey;
+			testDevicesId = testDevices;
             IsInitialized = true;
         }
 
@@ -55,7 +57,7 @@ namespace Xamarinos.AdMob.Forms
 #if PORTABLE
 			return null;
 #else
-            return new AdsInterstitialImplementation();
+            return new AdsInterstitialImplementation(testDevicesId);
 #endif
         }
 
