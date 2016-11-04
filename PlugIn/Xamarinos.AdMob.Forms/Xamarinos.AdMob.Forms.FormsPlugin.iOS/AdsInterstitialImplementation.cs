@@ -11,7 +11,7 @@ namespace Xamarinos.AdMob.Forms
     public class AdsInterstitialImplementation : IInterstitialAdManager
     {
 		private List<string> testDevicesId;
-		public AdsInterstitialImplementation(List<string>testDevices)
+		public AdsInterstitialImplementation(List<string>testDevices = null)
         {
 			testDevicesId = testDevices;
         }
@@ -51,8 +51,11 @@ namespace Xamarinos.AdMob.Forms
                     showTask.TrySetResult(adsInterstitial.IsReady);
                 }
             };
-			testDevicesId.Add(Request.SimulatorId);
-			request.TestDevices = testDevicesId.ToArray();
+			if (testDevicesId != null)
+			{
+				testDevicesId.Add(Request.SimulatorId);
+				request.TestDevices = testDevicesId.ToArray();
+			}
             adsInterstitial.LoadRequest(request);
             return Task.WhenAll(showTask.Task);
         }

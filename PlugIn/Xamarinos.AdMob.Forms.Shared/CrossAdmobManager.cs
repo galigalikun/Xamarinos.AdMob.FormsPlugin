@@ -9,7 +9,7 @@ namespace Xamarinos.AdMob.Forms
     public class CrossAdmobManager
     {
 		private static List<string> testDevicesId;
-		public static void Init(string admobKey, List<string> testDevices )
+		public static void Init(string admobKey, List<string> testDevices = null )
         {
             AdmobKey = admobKey;
 			testDevicesId = testDevices;

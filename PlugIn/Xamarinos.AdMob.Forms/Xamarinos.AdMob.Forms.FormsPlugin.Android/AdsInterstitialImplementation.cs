@@ -19,12 +19,15 @@ namespace Xamarinos.AdMob.Forms
     public class AdsInterstitialImplementation : IInterstitialAdManager
     {
 		private AdRequest.Builder requestBuilder;
-		public AdsInterstitialImplementation(List<string>testDevices)
+		public AdsInterstitialImplementation(List<string>testDevices = null)
         {
 			requestBuilder = new AdRequest.Builder();
-			foreach (var id in testDevices)
-				requestBuilder.AddTestDevice(id);
-			requestBuilder.AddTestDevice(AdRequest.DeviceIdEmulator);
+			if (testDevices != null)
+			{
+				foreach (var id in testDevices)
+					requestBuilder.AddTestDevice(id);
+				requestBuilder.AddTestDevice(AdRequest.DeviceIdEmulator);
+			}
         }
 
         #region IAdsInterstitial implementation
