@@ -53,12 +53,14 @@ namespace Xamarinos.AdMob.Forms
             intlistener.AdLoaded = () => {
                 OnPresented?.Invoke();
             };
-            intlistener.AdClosed = () => {
+			intlistener.AdClosed = () => {
                 if (showTask != null)
                 {
                     showTask.TrySetResult(AdInterstitial.IsLoaded);
+					showTask = null;
                 }
             };
+
             //intlistener.OnAdLoaded();
             AdInterstitial.AdListener = intlistener;
 			AdInterstitial.LoadAd(requestBuilder.Build());

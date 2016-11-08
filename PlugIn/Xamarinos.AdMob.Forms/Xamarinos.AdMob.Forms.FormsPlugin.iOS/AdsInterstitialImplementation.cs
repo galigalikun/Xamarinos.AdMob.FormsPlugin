@@ -45,12 +45,24 @@ namespace Xamarinos.AdMob.Forms
                     OnPresented?.Invoke();
                 }
             };
+
             adsInterstitial.ScreenDismissed += (sender, e) => {
                 if (showTask != null)
                 {
                     showTask.TrySetResult(adsInterstitial.IsReady);
+					showTask = null;
+
                 }
-            };
+			};
+
+			adsInterstitial.ReceiveAdFailed += (sender, e) =>
+			{
+				OnPresented?.Invoke();
+				showTask.TrySetResult(false);
+				showTask.TrySetCanceled();
+				showTask = null;
+			};
+
 			if (testDevicesId != null)
 			{
 				testDevicesId.Add(Request.SimulatorId);
