@@ -23,6 +23,7 @@ namespace Xamarinos.AdMob.Forms.Android
 
         public Action AdLoaded;
         public Action AdClosed;
+		public Action AdFailed;
 
         public override void OnAdLoaded()
         {
@@ -40,5 +41,11 @@ namespace Xamarinos.AdMob.Forms.Android
             base.OnAdClosed();
             AdClosed?.Invoke();
         }
+
+		public override void OnAdFailedToLoad(int errorCode)
+		{
+			base.OnAdFailedToLoad(errorCode);
+			AdFailed?.Invoke();
+		}
     }
 }

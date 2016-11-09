@@ -56,10 +56,19 @@ namespace Xamarinos.AdMob.Forms
 			intlistener.AdClosed = () => {
                 if (showTask != null)
                 {
-                    showTask.TrySetResult(AdInterstitial.IsLoaded);
+					showTask.TrySetResult(AdInterstitial.IsLoaded);
 					showTask = null;
                 }
             };
+			intlistener.AdFailed = () =>
+			{
+				OnPresented?.Invoke();
+				if (showTask != null)
+				{
+					showTask.TrySetResult(AdInterstitial.IsLoaded);
+					showTask = null;
+				}
+			};
 
             //intlistener.OnAdLoaded();
             AdInterstitial.AdListener = intlistener;
@@ -67,6 +76,6 @@ namespace Xamarinos.AdMob.Forms
             return Task.WhenAll(showTask.Task);
         }
 
-        #endregion
+		#endregion
     }
 }
