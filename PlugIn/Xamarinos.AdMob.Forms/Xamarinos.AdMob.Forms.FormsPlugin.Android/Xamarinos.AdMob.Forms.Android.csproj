@@ -18,7 +18,7 @@
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +92,8 @@
     <Compile Include="AdBannerRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdsVideoImplementation.cs" />
+    <Compile Include="AdVideoListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

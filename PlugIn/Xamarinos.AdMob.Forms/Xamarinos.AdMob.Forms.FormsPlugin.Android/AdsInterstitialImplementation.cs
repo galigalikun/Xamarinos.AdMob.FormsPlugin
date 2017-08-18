@@ -35,7 +35,7 @@ namespace Xamarinos.AdMob.Forms
 
         TaskCompletionSource<bool> showTask;
 
-        public Task Show(Action OnPresented = null)
+        public Task Show(string AdmobKey, Action OnPresented = null)
         {
             if (showTask != null)
             {
@@ -47,7 +47,7 @@ namespace Xamarinos.AdMob.Forms
             }
 
             AdInterstitial = new InterstitialAd(Xamarin.Forms.Forms.Context);
-            AdInterstitial.AdUnitId = CrossAdmobManager.AdmobKey;
+            AdInterstitial.AdUnitId = AdmobKey;
 
             var intlistener = new AdInterstitialListener(AdInterstitial);
             intlistener.AdLoaded = () => {

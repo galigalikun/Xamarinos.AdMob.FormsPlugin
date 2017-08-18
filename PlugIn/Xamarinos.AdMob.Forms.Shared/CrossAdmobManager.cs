@@ -6,20 +6,13 @@ using Xamarinos.AdMob.Forms.Abstractions;
 
 namespace Xamarinos.AdMob.Forms
 {
-    public class CrossAdmobManager
+    public class CrossAdmobManager<T> where T : class
     {
 		private static List<string> testDevicesId;
-		public static void Init(string admobKey, List<string> testDevices = null )
+		public static void Init(List<string> testDevices = null )
         {
-            AdmobKey = admobKey;
 			testDevicesId = testDevices;
             IsInitialized = true;
-        }
-
-        public static string AdmobKey
-        {
-            get;
-            private set;
         }
 
         public static bool IsInitialized
@@ -28,9 +21,9 @@ namespace Xamarinos.AdMob.Forms
             private set;
         }
 
-        static Lazy<IInterstitialAdManager> Implementation = new Lazy<IInterstitialAdManager>(() => CreateGameCenterManager(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+        static Lazy<T> Implementation = new Lazy<T>(() => CreateGameCenterManager(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
-        public static IInterstitialAdManager Current
+        public static T Current
         {
             get
             {
@@ -52,12 +45,12 @@ namespace Xamarinos.AdMob.Forms
         {
         }
 
-        static IInterstitialAdManager CreateGameCenterManager()
+        static T CreateGameCenterManager()
         {
 #if PORTABLE
 			return null;
 #else
-            return new AdsInterstitialImplementation(testDevicesId);
+            return Activator.CreateInstance(typeof(T), new Object[] { testDevicesId }) as T;
 #endif
         }
 

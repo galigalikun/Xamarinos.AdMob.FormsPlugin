@@ -11,6 +11,6 @@ namespace Xamarinos.AdMob.Forms.Abstractions
         /// <summary>
         /// Show Interstitial Ad.
         /// </summary>
-        Task Show(Action OnPresented = null);
+        Task Show(string AdmobKey, Action OnPresented = null);
     }
 }
