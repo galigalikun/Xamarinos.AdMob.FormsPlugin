@@ -18,7 +18,7 @@ namespace Xamarinos.AdMob.Forms.iOS
         #region IAdsInterstitial implementation
         RewardBasedVideoAd adsVideo;
 		TaskCompletionSource<bool> showTask;
-		public Task Show(Action OnPresented = null)
+		public Task Show(string AdmobKey, Action OnPresented = null)
 		{
 			if (showTask != null)
 			{
@@ -72,7 +72,7 @@ namespace Xamarinos.AdMob.Forms.iOS
 				request.TestDevices = testDevicesId.ToArray();
 			}
 
-			RewardBasedVideoAd.SharedInstance.LoadRequest(request, CrossAdmobManager.AdmobKey);
+			RewardBasedVideoAd.SharedInstance.LoadRequest(request, AdmobKey);
 
 			return Task.WhenAll(showTask.Task);
 		}

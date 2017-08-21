@@ -19,7 +19,7 @@ namespace Xamarinos.AdMob.Forms
         #region IAdsInterstitial implementation
         Interstitial adsInterstitial;
         TaskCompletionSource<bool> showTask;
-        public Task Show(Action OnPresented = null)
+        public Task Show(string AdmobKey, Action OnPresented = null)
         {
             if (showTask != null)
             {
@@ -29,7 +29,7 @@ namespace Xamarinos.AdMob.Forms
             else {
                 showTask = new TaskCompletionSource<bool>();
             }
-            adsInterstitial = new Interstitial(CrossAdmobManager.AdmobKey);
+            adsInterstitial = new Interstitial(AdmobKey);
             var request = Request.GetDefaultRequest();
             adsInterstitial.AdReceived += (sender, args) =>
             {
