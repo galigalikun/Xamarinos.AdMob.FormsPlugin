@@ -1,5 +1,6 @@
 ﻿using Xamarinos.AdMob.Forms.Abstractions;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarinos.AdMob.Forms.iOS;
 using Xamarin.Forms.Platform.iOS;
@@ -34,7 +35,7 @@ namespace Xamarinos.AdMob.Forms.iOS
                 adView = new BannerView(size: AdSizeCons.Banner, origin: new CGPoint(0, 0))
                 {
                     AdUnitID = adsbanner.AdID,
-                    RootViewController = UIApplication.SharedApplication.Windows[0].RootViewController
+                    RootViewController = UIApplication.SharedApplication.Windows.Select(w => w.RootViewController).Where(viewController => viewController != null).FirstOrDefault()
                 };
 
                 adView.AdReceived += (sender, args) => {
