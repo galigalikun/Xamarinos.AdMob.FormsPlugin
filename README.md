@@ -1,9 +1,9 @@
 # Xamarinos.AdMob.FormsPlugin
 AdMob Plugin for Xamarin.Forms
 
-##Setup
+## Setup
 
-###iOS
+### iOS
 
 In your AppDelegate.cs add the following lines:
 
@@ -23,13 +23,13 @@ In your MainActivity.cs on the "OnCreate" Method add the following lines:
 //Register AdBanner Control Renderer
 AdBannerRenderer.Init ();
 
-//Initialize Interstitial Manager with a Specific AdMob Key
-CrossAdmobManager.Init (Strings.AdMobKey);
+//Initialize Interstitial Manager with test dives
+CrossAdmobManager.Init (new string[]{});
 ```
 
-##Usage
+## Usage
 
-###Banner Control
+### Banner Control
 
 ```
 var myBanner = new AdBanner();
@@ -38,8 +38,15 @@ var myBanner = new AdBanner();
 myBanner.AdID = Strings.AdMobKey;
 ```
 
-###Interstitial
+### Interstitial
 
 ```
-await CrossAdmobManager.Current.Show ();
+await CrossAdmobManager.Current.Show<IInterstitialAdManager> (Strings.AdMobKey);
 ```
+
+### RewardVideo
+
+```
+await CrossAdmobManager.Current.Show<VideoAdManager> (Strings.AdMobKey);
+```
+
